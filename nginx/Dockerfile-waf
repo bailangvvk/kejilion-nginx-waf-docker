@@ -45,7 +45,6 @@ RUN set -eux && wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
     && strip /usr/src/nginx-modules/*.so \
     && cd .. \
     && rm -rf nginx-${NGINX_VERSION} ngx_brotli ModSecurity-nginx zstd-nginx-module \
-    && strip /usr/sbin/nginx \
     && apk del --purge .build-deps \
     && rm -rf /var/cache/apk/*
 
@@ -83,6 +82,7 @@ RUN set -eux && mkdir -p /etc/nginx/modsec/plugins \
     && echo 'Include /etc/nginx/modsec/rules/*.conf' >> /etc/nginx/modsec/modsecurity.conf \
     && echo 'Include /etc/nginx/modsec/plugins/*-after.conf' >> /etc/nginx/modsec/modsecurity.conf \
     && apk add --no-cache lua5.1 lua5.1-dev pcre pcre-dev yajl yajl-dev \
+    && strip /usr/sbin/nginx \
     && ldconfig /usr/lib \
     && wget https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/unicode.mapping -O /etc/nginx/modsec/unicode.mapping \
     && rm -rf /var/cache/apk/*
