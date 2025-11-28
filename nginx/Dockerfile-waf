@@ -56,7 +56,7 @@ WORKDIR /tmp
 # 安装构建依赖
 # 安装构建依赖
 RUN set -eux && \
-    apk add --no-cache .build-deps \
+    apk add --no-cache --virtual .build-deps \
     build-base \
     curl \
     # pcre-dev \
