@@ -6,7 +6,7 @@ on:
   # schedule:
   #   - cron: '0 0 1 * *'  # 每个月的1号00:00（UTC时间）
   push:
-    branches: [ main ]
+    branches: [ test ]
 
 jobs:
   build:
