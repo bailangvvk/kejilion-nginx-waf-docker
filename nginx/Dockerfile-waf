@@ -4,7 +4,7 @@ ARG NGINX_VERSION ZSTD_VERSION
 RUN apk add --no-cache --virtual .build-deps \
     pcre-dev zlib-dev openssl-dev wget git build-base brotli-dev \
     libxml2-dev libxslt-dev curl-dev yajl-dev lmdb-dev geoip-dev lua-dev \
-    automake autoconf libtool pkgconfig linux-headers pcre2-dev
+    automake autoconf libtool pkgconfig linux-headers pcre2-dev binutils
 
 WORKDIR /usr/src
 
@@ -81,7 +81,7 @@ RUN set -eux && mkdir -p /etc/nginx/modsec/plugins \
     && echo 'Include /etc/nginx/modsec/plugins/*-before.conf' >> /etc/nginx/modsec/modsecurity.conf \
     && echo 'Include /etc/nginx/modsec/rules/*.conf' >> /etc/nginx/modsec/modsecurity.conf \
     && echo 'Include /etc/nginx/modsec/plugins/*-after.conf' >> /etc/nginx/modsec/modsecurity.conf \
-    && apk add --no-cache lua5.1 lua5.1-dev pcre pcre-dev yajl yajl-dev \
+    && apk add --no-cache lua5.1 lua5.1-dev pcre pcre-dev yajl yajl-dev binutils \
     && strip /usr/sbin/nginx \
     && ldconfig /usr/lib \
     && wget https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/unicode.mapping -O /etc/nginx/modsec/unicode.mapping \
