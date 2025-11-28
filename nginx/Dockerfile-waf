@@ -52,7 +52,8 @@ RUN set -eux && wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
 
 
 
-FROM nginx:alpine
+# FROM nginx:alpine
+FROM bailangvvking/nginx
 ARG NGINX_VERSION CORERULESET_VERSION
 
 # 复制压缩模块和 ModSecurity
