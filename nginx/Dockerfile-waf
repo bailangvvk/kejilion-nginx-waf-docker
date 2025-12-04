@@ -4,7 +4,8 @@ ARG NGINX_VERSION ZSTD_VERSION
 RUN apk add --no-cache --virtual .build-deps \
     pcre-dev zlib-dev openssl-dev wget git build-base brotli-dev \
     libxml2-dev libxslt-dev curl-dev yajl-dev lmdb-dev geoip-dev lua-dev \
-    automake autoconf libtool pkgconfig linux-headers pcre2-dev
+    automake autoconf libtool pkgconfig linux-headers pcre2-dev \
+    libstdc++
 
 WORKDIR /usr/src
 
