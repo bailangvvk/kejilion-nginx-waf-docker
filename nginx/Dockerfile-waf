@@ -19,6 +19,7 @@ RUN set -eux && wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
     && git submodule update \
     && ./build.sh \
     && ./configure \
+    && sed -i '/#include "modsecurity\/variable_value.h"/a #include <cstdint>' headers/modsecurity/collection/collection.h \
     && make -j$(nproc) && make install \
     && cd .. \
     && du -sh /usr/local/modsecurity/lib \
