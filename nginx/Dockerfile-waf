@@ -52,7 +52,7 @@ FROM nginx:alpine
 ARG NGINX_VERSION CORERULESET_VERSION
 
 # 复制压缩模块和 ModSecurity
-COPY --from=builder /tmp/src/nginx-${NGINX_VERSION}/objs/*.so /etc/nginx/modules/
+COPY --from=builder /tmp/src/nginx-*/objs/*.so /etc/nginx/modules/
 COPY --from=builder /usr/local/modsecurity/lib/* /usr/lib/
 
 # 创建配置目录并下载必要文件
